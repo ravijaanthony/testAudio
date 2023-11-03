@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Test frequency(Bass)</title>
+</head>
+<body>
+    <h1>Sample Audio Frequency</h1>
+    <h2>WARNING! PLAY 1 AUDIO FILE AT A TIME</h2>
+
+    <input type="button" class="stop-audio-button" value="stop button" onclick="stopAllAudio()">
+
+    <audio id="myAudio"></audio>
+    
+    <div id="myAudioFiles">
+    <input type="button" class="audio-button" value="50Hz" onclick="generateSoundWave(50)">
+    <input type="button" class="audio-button" value="60Hz" onclick="generateSoundWave(60)">
+    <input type="button" class="audio-button" value="70Hz" onclick="generateSoundWave(70)">
+    <input type="button" class="audio-button" value="80Hz" onclick="generateSoundWave(80)">
+    <input type="button" class="audio-button" value="90Hz" onclick="generateSoundWave(90)">
+    <input type="button" class="audio-button" value="100Hz" onclick="generateSoundWave(100)">
+    <input type="button" class="audio-button" value="110Hz" onclick="generateSoundWave(110)">
+    <input type="button" class="audio-button" value="120Hz" onclick="generateSoundWave(120)">
+    <input type="button" class="audio-button" value="130Hz" onclick="generateSoundWave(130)">
+    <input type="button" class="audio-button" value="140Hz" onclick="generateSoundWave(140)">
+    <input type="button" class="audio-button" value="150Hz" onclick="generateSoundWave(150)">
+    <input type="button" class="audio-button" value="160Hz" onclick="generateSoundWave(160)">
+    <input type="button" class="audio-button" value="170Hz" onclick="generateSoundWave(170)">
+    <input type="button" class="audio-button" value="180Hz" onclick="generateSoundWave(180)">
+    <input type="button" class="audio-button" value="190Hz" onclick="generateSoundWave(190)">
+    <input type="button" class="audio-button" value="200Hz" onclick="generateSoundWave(200)">
+    <input type="button" class="audio-button" value="210Hz" onclick="generateSoundWave(210)">
+    <input type="button" class="audio-button" value="220Hz" onclick="generateSoundWave(220)">
+    <input type="button" class="audio-button" value="230Hz" onclick="generateSoundWave(230)">
+    <input type="button" class="audio-button" value="240Hz" onclick="generateSoundWave(240)">
+    <input type="button" class="audio-button" value="250Hz" onclick="generateSoundWave(250)">
+    <input type="button" class="audio-button" value="260Hz" onclick="generateSoundWave(260)">
+    <input type="button" class="audio-button" value="270Hz" onclick="generateSoundWave(270)">
+    <input type="button" class="audio-button" value="280Hz" onclick="generateSoundWave(280)">
+    <input type="button" class="audio-button" value="290Hz" onclick="generateSoundWave(290)">
+    <input type="button" class="audio-button" value="300Hz" onclick="generateSoundWave(300)">
+    <input type="button" class="audio-button" value="310Hz" onclick="generateSoundWave(310)">
+    <input type="button" class="audio-button" value="320Hz" onclick="generateSoundWave(320)">
+    </div>
+
+    <script>
+        // Create a shared audio context.
+    const audioContext = new AudioContext();
+
+// Create an array to store the references to all the oscillator nodes.
+const oscillatorNodes = [];
+
+// Generate a sound wave with a specific frequency.
+function generateSoundWave(frequency) {
+    const oscillatorNode = audioContext.createOscillator();
+    oscillatorNode.frequency.setValueAtTime(frequency, audioContext.currentTime);
+    oscillatorNode.connect(audioContext.destination);
+    oscillatorNode.start();
+
+    // Add the oscillator node to the array.
+    oscillatorNodes.push(oscillatorNode);
+}
+
+function stopAllAudio() {
+    // Loop through the array and stop each oscillator node.
+    for (let i = 0; i < oscillatorNodes.length; i++) {
+        oscillatorNodes[i].stop();
+    }
+
+    // Empty the array.
+    oscillatorNodes.length = 0;
+}
+
+
+    </script>
+
+</body>
+</html>
